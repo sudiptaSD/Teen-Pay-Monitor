@@ -12,23 +12,19 @@ function NativeTabLayout() {
     <NativeTabs>
       <NativeTabs.Trigger name="index">
         <Icon sf={{ default: "house", selected: "house.fill" }} />
-        <Label>Home</Label>
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="pay">
-        <Icon sf={{ default: "paperplane", selected: "paperplane.fill" }} />
-        <Label>Pay</Label>
-      </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="goals">
-        <Icon sf={{ default: "target", selected: "target" }} />
-        <Label>Goals</Label>
+        <Label>Dashboard</Label>
       </NativeTabs.Trigger>
       <NativeTabs.Trigger name="activity">
         <Icon sf={{ default: "chart.bar", selected: "chart.bar.fill" }} />
         <Label>Activity</Label>
       </NativeTabs.Trigger>
-      <NativeTabs.Trigger name="profile">
-        <Icon sf={{ default: "person", selected: "person.fill" }} />
-        <Label>Profile</Label>
+      <NativeTabs.Trigger name="budget">
+        <Icon sf={{ default: "slider.horizontal.3", selected: "slider.horizontal.3" }} />
+        <Label>Budget</Label>
+      </NativeTabs.Trigger>
+      <NativeTabs.Trigger name="reports">
+        <Icon sf={{ default: "doc.text", selected: "doc.text.fill" }} />
+        <Label>Reports</Label>
       </NativeTabs.Trigger>
     </NativeTabs>
   );
@@ -44,7 +40,7 @@ function ClassicTabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: colors.primary,
+        tabBarActiveTintColor: "#2563EB",
         tabBarInactiveTintColor: colors.mutedForeground,
         headerShown: false,
         tabBarStyle: {
@@ -66,43 +62,36 @@ function ClassicTabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
-          tabBarIcon: ({ color }) => <Feather name="home" size={22} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="pay"
-        options={{
-          title: "Pay",
-          tabBarIcon: ({ color }) => <Feather name="send" size={22} color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="goals"
-        options={{
-          title: "Goals",
-          tabBarIcon: ({ color }) => <Feather name="target" size={22} color={color} />,
+          title: "Dashboard",
+          tabBarIcon: ({ color }) => <Feather name="grid" size={22} color={color} />,
         }}
       />
       <Tabs.Screen
         name="activity"
         options={{
           title: "Activity",
-          tabBarIcon: ({ color }) => <Feather name="bar-chart-2" size={22} color={color} />,
+          tabBarIcon: ({ color }) => <Feather name="activity" size={22} color={color} />,
         }}
       />
       <Tabs.Screen
-        name="profile"
+        name="budget"
         options={{
-          title: "Profile",
-          tabBarIcon: ({ color }) => <Feather name="user" size={22} color={color} />,
+          title: "Budget",
+          tabBarIcon: ({ color }) => <Feather name="sliders" size={22} color={color} />,
+        }}
+      />
+      <Tabs.Screen
+        name="reports"
+        options={{
+          title: "Reports",
+          tabBarIcon: ({ color }) => <Feather name="file-text" size={22} color={color} />,
         }}
       />
     </Tabs>
   );
 }
 
-export default function TeenTabLayout() {
+export default function ParentTabLayout() {
   if (isLiquidGlassAvailable()) return <NativeTabLayout />;
   return <ClassicTabLayout />;
 }

@@ -1,0 +1,8 @@
+uploads = []
+outputs = []
+
+[[generated]]
+id = "G9beFlucNzRwb47RRxTK7"
+uri = "file://artifacts/mobile/assets/images/icon.png"
+type = "image"
+title = "familypay app icon"
