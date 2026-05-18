@@ -4,6 +4,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import { router } from "expo-router";
 import React, { useState } from "react";
 import {
+  KeyboardAvoidingView,
   Modal,
   Platform,
   ScrollView,
@@ -173,7 +174,12 @@ export default function ParentDashboard() {
 
       {/* Fund Modal */}
       <Modal visible={showFund} transparent animationType="slide" statusBarTranslucent>
-        <View style={styles.modalOverlay}>
+        <KeyboardAvoidingView
+          style={styles.modalOverlay}
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={0}
+        >
+          <TouchableOpacity style={styles.modalDismiss} activeOpacity={1} onPress={() => { setShowFund(false); setFundAmount(""); }} />
           <View style={[styles.modalSheet, { backgroundColor: colors.card }]}>
             <View style={styles.modalHandle} />
             <Text style={[styles.modalTitle, { color: colors.foreground }]}>Add Funds to Aarav's Account</Text>
@@ -222,7 +228,7 @@ export default function ParentDashboard() {
               </TouchableOpacity>
             </View>
           </View>
-        </View>
+        </KeyboardAvoidingView>
       </Modal>
     </View>
   );
@@ -266,6 +272,7 @@ const styles = StyleSheet.create({
   seeAll: { fontSize: 13, fontFamily: "Inter_500Medium" },
   txCard: { borderRadius: 16, paddingHorizontal: 14, shadowColor: "#000", shadowOffset: { width: 0, height: 2 }, shadowOpacity: 0.05, shadowRadius: 8, elevation: 2 },
   modalOverlay: { flex: 1, backgroundColor: "rgba(0,0,0,0.4)", justifyContent: "flex-end" },
+  modalDismiss: { flex: 1 },
   modalSheet: { borderTopLeftRadius: 24, borderTopRightRadius: 24, padding: 24, paddingBottom: 40, gap: 14 },
   modalHandle: { width: 36, height: 4, backgroundColor: "#E0E0E0", borderRadius: 2, alignSelf: "center" },
   modalTitle: { fontSize: 19, fontFamily: "Inter_700Bold" },
